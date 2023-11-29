@@ -1,11 +1,13 @@
-import { Controller, Get, Req, Post, Param } from '@nestjs/common';
+import { Controller, Get, Req, Post, Param, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request } from 'express';
+import {CreateUser} from './user-create-dto'
+
 @Controller('users')
 export class UserController {
   constructor(private readonly appService: AppService) {}
   @Post()
-  createUser(@Req() request: Request): string {
+  createUser(@Body() CreateUser: CreateUser): string {
     return 'Create a new user';
   }
 
